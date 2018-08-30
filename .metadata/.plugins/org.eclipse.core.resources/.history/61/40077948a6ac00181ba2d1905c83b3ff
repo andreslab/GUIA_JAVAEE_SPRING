@@ -1,0 +1,6 @@
+package com.andreslab.prj.datapersistence.service;
+
+@Service
+public class ClienteServiceImpl {
+
+}

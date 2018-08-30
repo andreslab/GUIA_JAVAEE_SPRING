@@ -1,0 +1,44 @@
+package com.andreslab.prj.datapersistence.models.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.andreslab.prj.datapersistence.models.entity.Cliente;
+
+@Repository("clienteDaoJPA") //traduce las exception de acceso a base de datos, lleva nombre solo su se va a usar Qualify en dla clase donde se lo llama
+public class ClienteDaoImpl implements IClienteDao {
+
+	@PersistenceContext
+	private EntityManager entity;//todas las operaciones a la base de datos por medio de objetos
+	
+	@SuppressWarnings("unchecked") //omite los warning
+	@Transactional(readOnly=true) //solo lectura a la base de datos, si es tamb escritura, no no lleva
+	@Override
+	public List<Cliente> findAll() {
+		// TODO Auto-generated method stub
+		return entity.createQuery("from  Cliente").getResultList();
+	}
+
+	@Override
+	@Transactional//ya que es de escritura no agrego readOnlyl
+	public void save(Cliente cliente) {
+		// TODO Auto-generated method stub
+		if(cliente.getId() != null && cliente.getId() > 0) {
+			entity.persist(cliente);
+		}else {
+			entity.persist(cliente);
+		}
+		
+	}
+
+	@Override
+	public Cliente findOne(Long id) {
+		return entity.find(Cliente.class, id);
+	}
+
+}

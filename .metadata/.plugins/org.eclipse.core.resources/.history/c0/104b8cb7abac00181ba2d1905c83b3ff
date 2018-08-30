@@ -1,0 +1,10 @@
+package com.andreslab.prj.datapersistence.models.dao;
+
+import java.util.List;
+
+import com.andreslab.prj.datapersistence.models.entity.Cliente;
+
+public interface IClienteDao {
+
+	
+}

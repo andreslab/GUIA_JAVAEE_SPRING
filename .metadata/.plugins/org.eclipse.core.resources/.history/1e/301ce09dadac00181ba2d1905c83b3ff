@@ -1,0 +1,6 @@
+spring.datasource.url=jdbc:mysql//localhost/db_springboot
+spring.datasource.username=andres
+spring.datasource.password=sa
+spring.datasource.driver-class-name=org.h2.Driver
+spring.h2.console.enabled=true 
+#activa la consola de la base de datos h2 en memoria, en el navegador localhost:8080/h2-console

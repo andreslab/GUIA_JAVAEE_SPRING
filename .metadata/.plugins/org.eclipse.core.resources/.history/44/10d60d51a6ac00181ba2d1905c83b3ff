@@ -1,0 +1,8 @@
+package com.andreslab.prj.datapersistence.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ClienteServiceImpl {
+
+}

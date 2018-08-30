@@ -1,0 +1,47 @@
+package com.andreslab.prj.datapersistence.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.andreslab.prj.datapersistence.models.dao.IClienteDao;
+import com.andreslab.prj.datapersistence.models.entity.Cliente;
+
+@Service
+public class ClienteServiceImpl implements IClienteService{
+
+	
+	@Autowired
+	private IClienteDao clienteDao;
+	
+	@Override
+	public List<Cliente> findAll() {
+		// TODO Auto-generated method stub
+		return clienteDao.findAll();
+	}
+
+	@Override
+	@Transactional//ya que es de escritura no agrego readOnlyl
+	public void save(Cliente cliente) {
+		// TODO Auto-generated method stub
+		clienteDao.save(cliente);
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public Cliente findOne(Long id) {
+		// TODO Auto-generated method stub
+		return clienteDao.findOne(id);
+	}
+
+	@Override
+	@Transactional //read and write
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		clienteDao.delete(id);
+		
+	}
+
+}
